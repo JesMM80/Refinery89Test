@@ -11,7 +11,7 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        //
+        return view('departments.index');
     }
 
     /**
@@ -35,7 +35,7 @@ class DepartmentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('departments.show',['department' => $id]);
     }
 
     /**

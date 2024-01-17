@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('titulo')
-    Create a department
+    Department's details
 @endsection
 
 @section('contenido')

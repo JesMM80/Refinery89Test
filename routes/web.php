@@ -15,7 +15,9 @@ use App\Http\Controllers\DepartmentsController;
 */
 
 Route::get('/', function () {
-    return view('layouts.principal');
+    return view('departments.index');
 });
 
 Route::get('/departments/create',[DepartmentsController::class,'create'])->name('departments.create');
+Route::get('/departments',[DepartmentsController::class,'index'])->name('departments.index');
+Route::get('/departments/{id}',[DepartmentsController::class,'show'])->name('departments.show');
