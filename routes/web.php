@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,9 @@ Route::get('/departments/create',[DepartmentsController::class,'create'])->name(
 Route::post('/departments',[DepartmentsController::class,'store'])->name('departments.store');
 Route::get('/departments',[DepartmentsController::class,'index'])->name('departments.index');
 Route::get('/departments/{id}',[DepartmentsController::class,'show'])->name('departments.show');
+Route::put('/departments/{id}',[DepartmentsController::class,'update'])->name('departments.update');
+Route::delete('/departments/{id}',[DepartmentsController::class,'destroy'])->name('departments.destroy');
+
+Route::resource('/users',UsersController::class)->except([
+	'edit'
+])->names('users');
