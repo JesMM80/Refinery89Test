@@ -15,7 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::select('id', 'name', 'email')->paginate(5);
+        $users = User::select('id', 'name', 'email')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
 
         return view('users.index',['users' => $users]);
     }

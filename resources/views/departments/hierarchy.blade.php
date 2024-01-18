@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('titulo')
-    List of departments
+    Hierarchy of departments
 @endsection
 
 @section('contenido')
@@ -9,14 +9,6 @@
     <div class="md:flex md:items-center">
 
         <div class="md:w-1/2 lg:w-full p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
-
-            @if (session('message'))
-                <div class="p-2 border border-red-600 bg-red-300 font-bold mt-2 mb-2 text-center">
-                    <p class="mt-1 text-black text-sm leading-relaxed">
-                        {{ session('message') }}
-                    </p>
-                </div>
-            @endif
             
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
@@ -36,12 +28,6 @@
                         <div class="flex flex-col md:flex-row gap-3 items-stretch mt-5 md:mt-0">
                             <a href="{{ route('departments.show', $department->id)}}" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                                 View / Edit
-                            </a> 
-                            <a href="{{ route('departments.assignUserCreate',$department)}}" class="bg-green-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
-                                Assign users
-                            </a> 
-                            <a href="{{ route('departments.assignDepartmentCreate',$department)}}" class="bg-green-500 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
-                                Assign departments
                             </a> 
                             <form action="{{ route('departments.destroy', $department->id)}}" method="POST">
                                 @csrf

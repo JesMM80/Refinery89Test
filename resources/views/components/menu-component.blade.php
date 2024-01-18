@@ -59,7 +59,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="{{ route('departments.index') }}" class="block py-2 px-3 text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0" aria-current="page">
+                        <a href="{{ route('departments.hierarchy') }}" class="block py-2 px-3 text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0" aria-current="page">
                             Hierarchy departments
                         </a>
                     </li>
