@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDepartmentRequest;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
@@ -11,7 +13,9 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        return view('departments.index');
+        $departments = Department::select('id', 'name')->paginate(5);
+
+        return view('departments.index',['departments' => $departments]);
     }
 
     /**
@@ -25,15 +29,17 @@ class DepartmentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDepartmentRequest $request)
     {
-        //
+        Department::create($request->validated());
+
+        return to_route('departments.create')->with('message','Department was successfully created!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Department $id)
     {
         return view('departments.show',['department' => $id]);
     }

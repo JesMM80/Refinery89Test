@@ -19,7 +19,7 @@
                         type="text" 
                         name="name" id="name" placeholder="Name of the department" 
                         class="border p-3 w-full rounded-lg @error('name') border-red-600 @enderror"
-                        value="{{ old('name') }}" 
+                        value="{{ old('name', $department->name) }}" 
                     />
                     @error('name')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -29,14 +29,13 @@
                 </div>
                 <div class="mb-5">
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Subdepartment
+                        Assign Subdepartment
                     </label>
-                    <select wire:model="subdeparment" id="subdeparment" class="border p-3 w-full rounded-lg">
-                        <option>-- Seleccione --</option>
-                        {{-- Recogemos el array de la clase crearVacante y mostramos los resultados --}}
-                        {{-- @foreach ($subdeparments as $subdeparment)
+                    <select name="subdeparment" class="border p-3 w-full rounded-lg">
+                        <option>-- Select --</option>
+                        @foreach ($subdeparments as $subdeparment)
                             <option value="{{ $subdeparment->id }}">{{ $subdeparment->subdeparment }}</option>            
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
 
