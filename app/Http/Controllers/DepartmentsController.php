@@ -26,9 +26,10 @@ class DepartmentsController extends Controller
      */
     public function hierarchy()
     {
-        $departments = Department::select('id', 'name')->paginate(5);
+        // Obtén todos los departamentos con sus subdepartamentos
+        $departments = Department::with('subdepartments')->get();
 
-        return view('departments.hierarchy',['departments' => $departments]);
+        return view('departments.hierarchy', compact('departments'));
     }
 
     /**
@@ -125,7 +126,7 @@ class DepartmentsController extends Controller
         $subdepartment = Department::find($subdepartmentId);
 
         // Verificar si el subdepartamento ya está asociado al departamento
-        if ($department->subdepartments->contains($subdepartment->id)) {
+        if ($subdepartment->subdepartments->contains($department->id)) {
             return redirect()->route('departments.assignDepartmentCreate', $department)->with('error', 'Subdepartment is already assigned to the department');
         }
 

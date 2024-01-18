@@ -30,6 +30,7 @@ Route::post('/departments/user/{department}',[DepartmentsController::class,'assi
 Route::get('/departments/department/create/{department}',[DepartmentsController::class,'assignDepartmentCreate'])->name('departments.assignDepartmentCreate');
 Route::post('/departments/department/{department}',[DepartmentsController::class,'assignDepartmentStore'])->name('departments.assignDepartmentStore');
 
+Route::get('/departments/hierarchy', [DepartmentsController::class, 'hierarchy'])->name('departments.hierarchy');
 
 Route::resource('/users',UsersController::class)->except([
 	'edit'
